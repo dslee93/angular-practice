@@ -1,0 +1,27 @@
+<form #f = "ngForm">
+    <div class= "form-group">
+        <label for="email">Email</label><br>
+        <input ngModel #e = "ngModel" required minlength="4" id="email" name="email" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf= "e.touched && !e.valid">
+            <div *ngIf="e.errors.required">Email required</div>
+            <div *ngIf="e.errors.minlength">Needs to be longer. thats what she said...</div>
+        </div>
+    </div>
+    <div class= "form-group">
+        <label for="role">Role</label><br>
+        <textarea ngModel #r = "ngModel" name="role" id="role" cols="30" rows="20" class="form-control"></textarea>
+    </div>
+    <div class= "form-group">
+        <label for="passornopass">Passed Quality Gate?</label>
+        <input ngModel #q = "ngModel" id="passornopass" name="passornopass" type="checkbox" class="form-control"/>
+    </div>
+    <div class= "form-group">
+        <label for="streamName">Stream</label><br>
+        <select ngModel #s = "ngModel" id="streamName" name="streamName" class="form-control">
+            <option *ngFor="let stream of streamName" [value]="stream.name">{{stream.name}}</option>
+        </select>
+    </div>
+    <p>{{stuff | json }}</p>
+    <button class="btn btn-primary" [disabled]="!f.valid" (click) = "showingForm(f.form.value)">Submit</button>
+</form>
+

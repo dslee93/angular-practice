@@ -1,0 +1,19 @@
+<form #f="ngForm">
+    <div class = "form-group">
+        <label for="title">Title</label>
+        <input ngModel #title = "ngModel" required minlength="3" id="title" name="title" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf="title.touched && !title.valid">
+            <div *ngIf="title.errors.required">Title is required</div>
+            <div *ngIf="title.errors.minlength">Title should be atleast 3 characters</div>
+        </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid"(click)="createAlbum(f.value)">Submit</button>
+
+</form>
+
+<ul class="list-group">
+    <li *ngFor="let album of albums" class="list-group-item">
+        <a [routerLink]= "['/album', album.id]">{{album.title}}</a><br>
+    <button class= "btn btn-danger btn-small" (click) ="deleteAlbum(album)" >Delete</button>
+    </li>
+</ul>

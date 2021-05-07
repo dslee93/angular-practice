@@ -1,0 +1,8 @@
+Search<input #search1 (keyup.enter)="search(search1.value)"/><br>
+<h3>{{getTitle()}}</h3>
+<ul>
+    <li *ngFor = "let category of categories"> {{category}} </li>
+</ul>
+<img [src]= "imageUrl" /><br>
+<button class="btn btn-primary" (click) = "onSubmit(search1.value)">submit</button>
+Comments<input [(ngModel)] = "comments" (keyup.enter)= "onKeyUp()"/>

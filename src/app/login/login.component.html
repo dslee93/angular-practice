@@ -1,0 +1,11 @@
+<form >
+<p>UserName</p>
+<input [(ngModel)] = "username" [ngModelOptions]="{standalone: true}"> <br>
+<p>Password</p>
+<input [(ngModel)] = "password" [ngModelOptions]="{standalone: true}"> <br>
+<br>
+<button class="btn btn-primary" (click) = "onSubmit()">Login</button>
+</form>
+<p>{{ welcomeornot }}</p>
+
+

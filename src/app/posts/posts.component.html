@@ -1,0 +1,35 @@
+<form #f="ngForm">
+
+    <div class = "form-group">
+
+        <label for="title">Title</label>
+
+        <input ngModel #title = "ngModel" required minlength="3" id="title" name="title" type="text" class="form-control"/>
+
+        <div class="alert alert-danger" *ngIf="title.touched && !title.valid">
+
+            <div *ngIf="title.errors.required">Title is required</div>
+
+            <div *ngIf="title.errors.minlength">Title should be atleast 3 characters</div>
+
+        </div>
+
+    </div>
+
+    <div class = "form-group">
+
+        <label for="body">Body</label>
+
+        <textarea ngModel #body = "ngModel" id="body" name="body" cols="30" rows="20" class="form-control"></textarea>
+
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid"(click)="createPost(f.value)">Submit</button>
+
+</form>
+
+<ul class = "list-group">
+    <li *ngFor="let post of posts" class= "list-group-item">
+        <a [routerLink]="['/post',post.id]">{{post.title}}</a>
+        <button class= "btn btn-danger btn-sm" (click)="deletePost(post)">Delete</button>
+    </li>
+</ul>

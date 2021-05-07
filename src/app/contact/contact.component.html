@@ -1,0 +1,33 @@
+<form #form="ngForm">
+    <div class= "form-group">
+        <label for="firstname">Firstname</label>
+        <input ngModel #firstname = "ngModel" required minlength="3" id="firstname" name="firstname" type="text" class="form-control"/>
+        <div class="alert alert-danger" *ngIf= "firstname.touched && !firstname.valid">
+            <div *ngIf="firstname.errors.required">Firsname required</div>
+            <div *ngIf="firstname.errors.minlength">First Name should be?</div>
+        </div>
+    </div>
+    <div class= "form-group">
+        <label for="comment">Comment</label>
+        <textarea ngModel #c = "ngModel" id="comment" name="comment" cols="30" rows= "20" class="form-control"></textarea>
+    </div>
+
+    <div class = "form-group">
+        <label for="contactMethod" id="contactMethod">Contact Method
+        </label>
+        <select ngModel name = "contactMethod" id="contactMethod">
+            <option value="Mail">Mail</option>
+            <option value="Email">Email</option>
+            <option value="Phone">Phone</option>
+        </select>
+    </div>
+    <div class="radio" *ngFor="let method of contactMethods">
+        <label>
+            <input ngModel type="radio" name="contactMethodradio" [value]="method.id">
+            {{method.name}}
+        </label>
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!form.valid" (click) = "showingForm(form.form.value)">Submit</button>
+
+</form>

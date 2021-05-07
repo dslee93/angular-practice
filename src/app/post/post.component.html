@@ -1,0 +1,5 @@
+Title: <input  value="{{ post.title }}" #title  id="title" name="title" type="text" class="form-control"/><br>
+
+Body: <textarea  #body  value="{{ post.body }}" id="body" name="body" cols="30" rows="10" class="form-control"></textarea><br>
+
+<button class="btn btn-primary" (click)="updatePost(title,body)">Update Post</button>
